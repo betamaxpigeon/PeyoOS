@@ -1,7 +1,7 @@
-NASM = nasm
+NASM ?= $(shell command -v nasm 2>/dev/null || printf '%s' /opt/local/bin/nasm)
 CXX = x86_64-elf-g++
 LD = x86_64-elf-ld
-GRUB_MKRESCUE = grub-mkrescue
+GRUB_MKRESCUE ?= $(shell command -v grub-mkrescue 2>/dev/null || command -v i686-elf-grub-mkrescue 2>/dev/null || command -v x86_64-elf-grub-mkrescue)
 
 CXXFLAGS = -m64 -O2 -ffreestanding -fno-builtin -fno-exceptions -fno-rtti \
 	-fno-stack-protector -fno-pic -fno-pie -fno-unwind-tables \

@@ -474,7 +474,7 @@ void execute_command(const char* command) {
     clear_terminal();
   } else if (equals(args, "about")) {
     put_char('\n');
-    write("PeyoOS is a basic operating system built from scratch based off of Ubuntu, made by VHSCrow.");
+    write("PeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyoPeyo");
     put_char('\n');
   } else if (equals(args, "pwd")) {
     write("/");

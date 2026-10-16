@@ -7,6 +7,18 @@ CXXFLAGS = -m64 -O2 -ffreestanding -fno-builtin -fno-exceptions -fno-rtti \
 	-fno-stack-protector -fno-pic -fno-pie -fno-unwind-tables \
 	-fno-asynchronous-unwind-tables -mno-red-zone -mno-sse -mno-sse2 -mno-mmx
 
+CUSTOM_FONT ?= $(wildcard font.ttf)
+ifneq ($(CUSTOM_FONT),)
+empty :=
+space := $(empty) $(empty)
+escaped_font_path = $(subst $(space),\$(space),$(CUSTOM_FONT))
+CXXFLAGS += -DPEYO_CUSTOM_FONT
+kernel.o: generated_font.h
+
+generated_font.h: $(call escaped_font_path) tools/ttf_to_bitmap.py
+	python3 tools/ttf_to_bitmap.py "$(CUSTOM_FONT)" generated_font.h
+endif
+
 .PHONY: all iso clean
 
 all: peyoos.iso
@@ -27,4 +39,4 @@ peyoos.iso: peyoos.bin iso_root/boot/grub/grub.cfg
 iso: peyoos.iso
 
 clean:
-	rm -f boot.o kernel.o peyoos.bin peyoos.iso iso_root/boot/peyoos.bin
+	rm -f boot.o kernel.o peyoos.bin peyoos.iso generated_font.h iso_root/boot/peyoos.bin

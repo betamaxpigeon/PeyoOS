@@ -2,3 +2,5 @@
 boot.o
 peyoos.bin
 peyoos.iso
+build.sh
+generated_font.h

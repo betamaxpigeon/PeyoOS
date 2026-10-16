@@ -10,13 +10,14 @@ multiboot_start:
 
 align 8
   dw 5
-  dw 0
+  dw 1
   dd 20
-  dd 1024
-  dd 768
+  dd 1920
+  dd 1080
   dd 32
 
 align 8
+  dw 0
   dw 0
   dd 8
 multiboot_end:
